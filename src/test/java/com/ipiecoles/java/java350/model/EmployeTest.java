@@ -130,4 +130,24 @@ class EmployeTest {
 
     }
 
+    //Deuxième test paramétré sur la méthode getPrimeAnuelle
+
+    @ParameterizedTest
+    @CsvSource({
+            "2, 'M12345',4, 1.0, 3970.0",
+    })
+    void getPrimeAnnuelle2(Integer performance, String matricule, Long nbAnneeAnciennete, Double tempsPartiel, Double primeCalculee){
+        //Given
+        Employe employe = new Employe();
+        employe.setMatricule(matricule);
+        employe.setTempsPartiel(tempsPartiel);
+        employe.setDateEmbauche(LocalDate.now().minusYears(nbAnneeAnciennete));
+        employe.setPerformance(performance);
+        //When
+        Double primeAnciennete = Entreprise.PRIME_ANCIENNETE * employe.getNombreAnneeAnciennete();
+        Double prime = employe.getPrimeAnnuelle()* Entreprise.INDICE_PRIME_MANAGER + primeAnciennete;
+        //Then
+        Assertions.assertThat(prime).isEqualTo(primeCalculee);
+    }
+
 }
