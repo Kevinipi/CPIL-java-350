@@ -1,6 +1,9 @@
 package com.ipiecoles.java.java350.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
 import java.time.LocalDate;
 
 class EmployeTest {
@@ -94,6 +97,37 @@ class EmployeTest {
 
         //Then
         Assertions.assertThat(nbAnnees).isEqualTo(0);
+    }
+
+    //Test paramétré sur la méthode getPrimeAnnuelle
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, 'T12345', 0, 1.0, 1000.0",
+            "1, 'T12345', 2, 0.5, 600.0",
+            "1, 'T12345', 2, 1.0, 1200.0",
+            "2, 'T12345', 0, 1.0, 2300.0",
+            "2, 'T12345', 1, 1.0, 2400.0",
+            "1, 'M12345', 0, 1.0, 1700.0",
+            "1, 'M12345', 5, 1.0, 2200.0",
+            "2, 'M12345', 0, 1.0, 1700.0",
+            "2, 'M12345', 8, 1.0, 2500.0",
+            " , 'M12345',4, 2.0, 4200.0",
+            "2, , 4, 1.0, 2700.0"
+    })
+    void getPrimeAnnuelle(Integer performance, String matricule, Long nbAnneeAnciennete, Double tempsPartiel, Double primeCalculee){
+        //Given
+        Employe employe = new Employe("Pose", "Kévin", "C00004", LocalDate.now(), 3000.0, 1, 3.0 );
+        employe.setMatricule(matricule);
+        employe.setTempsPartiel(tempsPartiel);
+        employe.setDateEmbauche(LocalDate.now().minusYears(nbAnneeAnciennete));
+        employe.setPerformance(performance);
+        //When
+        Double prime = employe.getPrimeAnnuelle();
+
+        //Then
+        Assertions.assertThat(prime).isEqualTo(primeCalculee);
+
     }
 
 }
