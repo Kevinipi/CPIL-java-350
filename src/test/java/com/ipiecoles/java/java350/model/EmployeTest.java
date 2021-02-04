@@ -1,11 +1,6 @@
 package com.ipiecoles.java.java350.model;
-import com.ipiecoles.java.java350.exception.EmployeException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import nl.jqno.equalsverifier.EqualsVerifier;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 class EmployeTest {
@@ -99,12 +94,6 @@ class EmployeTest {
 
         //Then
         Assertions.assertThat(nbAnnees).isEqualTo(0);
-    }
-
-    //Test pour testé la méthode hashCode et equals
-    @Test
-    void equalsHashCodeContracts() {
-        EqualsVerifier.forClass(Employe.class).verify();
     }
 
 }
