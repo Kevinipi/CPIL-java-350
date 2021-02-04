@@ -19,7 +19,7 @@ class EmployeTest {
         Integer nbAnneeAciennete = employe.getNombreAnneeAnciennete();
 
         //then
-        Assertions.assertThat(nbAnneeAciennete).isEqualTo(0);
+        Assertions.assertThat(nbAnneeAciennete).isZero();
     }
 
 
@@ -36,7 +36,7 @@ class EmployeTest {
         Integer nbAnneEmploye = employe.getNombreAnneeAnciennete();
 
         //Then : test du nombre d'année d'ancienneté
-        Assertions.assertThat(nbAnneEmploye).isEqualTo(0);
+        Assertions.assertThat(nbAnneEmploye).isZero();
     }
 
     /**
@@ -68,7 +68,7 @@ class EmployeTest {
         Integer anneeAnciennete = e.getNombreAnneeAnciennete();
 
         //Then
-        Assertions.assertThat(anneeAnciennete).isEqualTo(0);
+        Assertions.assertThat(anneeAnciennete).isZero();
     }
 
     @Test
@@ -81,7 +81,7 @@ class EmployeTest {
         Integer anneeAnciennete = e.getNombreAnneeAnciennete();
 
         //Then
-        Assertions.assertThat(anneeAnciennete).isEqualTo(0);
+        Assertions.assertThat(anneeAnciennete).isZero();
     }
 
     //Test unitaire nombre d'année d'ancienneté null
@@ -96,7 +96,7 @@ class EmployeTest {
         Integer nbAnnees = employe.getNombreAnneeAnciennete();
 
         //Then
-        Assertions.assertThat(nbAnnees).isEqualTo(0);
+        Assertions.assertThat(nbAnnees).isZero();
     }
 
     //Test paramétré sur la méthode getPrimeAnnuelle
